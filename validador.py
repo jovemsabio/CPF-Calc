@@ -7,15 +7,15 @@ def validaCPF(CPF):
     :param CPF: Número do CPF como string
     :return: True, quando o CPF for válido e False, caso contrário
     """
-
-    cpf = list(CPF.replace('.', '').replace('-', ''))
-    print(cpf)
+    CPF = CPF.replace('.', '').replace('-', '')
+    cpf = list(CPF)
+    # print(cpf)
 
     try:
         if len(cpf) != 11:
-            raise Exception('CPF Inválido: deve conter 11 dígitos')
+            raise Exception('Deve conter 11 dígitos')
         elif not CPF.isalnum():
-            raise Exception('CPF Inválido: deve conter apenas números')
+            raise Exception('Deve conter apenas números')
 
         # dv -> dígito verificador
         dv = str()
@@ -34,6 +34,7 @@ def validaCPF(CPF):
             raise Exception('CPF Inválido')
 
     except Exception as e:
+        # print(e)
         return False
     else:
         return True
